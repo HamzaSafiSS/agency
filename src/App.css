@@ -1,0 +1,32 @@
+/* ===================================================
+   APP-LEVEL STYLES
+   =================================================== */
+
+/* Smooth scroll target offset for sticky header */
+:target {
+  scroll-margin-top: var(--header-height);
+}
+
+/* Selection */
+::selection {
+  background: rgba(232, 131, 42, 0.2);
+  color: var(--navy);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--gray-100);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--gray-300);
+  border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gray-400);
+}

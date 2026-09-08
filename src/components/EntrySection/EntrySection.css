@@ -1,0 +1,374 @@
+/* ===================================================
+   ENTRY SECTION — Two-Sided CTA
+   =================================================== */
+
+.entry-section {
+  position: relative;
+  padding: var(--space-4xl) 0;
+  background: var(--off-white);
+  overflow: hidden;
+}
+
+/* ── Background Decorations ── */
+.entry-section__bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.entry-section__bg-pattern {
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 1px 1px, var(--gray-200) 1px, transparent 0);
+  background-size: 40px 40px;
+  opacity: 0.5;
+}
+
+.entry-section__bg-glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0;
+  transition: opacity 1.2s ease;
+}
+
+.entry-section--visible .entry-section__bg-glow {
+  opacity: 1;
+}
+
+.entry-section__bg-glow--1 {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(232, 131, 42, 0.08), transparent 70%);
+  top: -100px;
+  right: -100px;
+}
+
+.entry-section__bg-glow--2 {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(27, 42, 74, 0.06), transparent 70%);
+  bottom: -80px;
+  left: -80px;
+}
+
+/* ── Inner Layout ── */
+.entry-section__inner {
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Section Header ── */
+.entry-section__header {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto var(--space-3xl);
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.entry-section--visible .entry-section__header {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.entry-section__label {
+  display: inline-block;
+  padding: 6px 18px;
+  background: linear-gradient(135deg, rgba(232, 131, 42, 0.1), rgba(245, 166, 35, 0.1));
+  color: var(--orange);
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(232, 131, 42, 0.15);
+  margin-bottom: var(--space-md);
+}
+
+.entry-section__title {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  font-weight: 800;
+  color: var(--navy);
+  margin-bottom: var(--space-md);
+  line-height: 1.15;
+}
+
+.entry-section__title-accent {
+  background: linear-gradient(135deg, var(--orange), var(--orange-light));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.entry-section__subtitle {
+  font-size: 1.05rem;
+  color: var(--gray-500);
+  line-height: 1.7;
+}
+
+/* ── Cards Grid ── */
+.entry-section__cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-xl);
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* ── Individual Card ── */
+.entry-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  background: var(--white);
+  box-shadow: var(--shadow-card);
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  text-decoration: none;
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+.entry-section--visible .entry-card--employer {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.15s;
+}
+
+.entry-section--visible .entry-card--seeker {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.3s;
+}
+
+.entry-card:hover {
+  transform: translateY(-8px);
+  box-shadow:
+    0 20px 60px rgba(27, 42, 74, 0.15),
+    0 8px 24px rgba(27, 42, 74, 0.08);
+}
+
+/* ── Card Image ── */
+.entry-card__image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 260px;
+  overflow: hidden;
+}
+
+.entry-card__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.entry-card:hover .entry-card__image {
+  transform: scale(1.06);
+}
+
+.entry-card__image-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent 40%,
+    rgba(27, 42, 74, 0.05) 100%
+  );
+  transition: background 0.5s ease;
+}
+
+.entry-card:hover .entry-card__image-overlay {
+  background: linear-gradient(
+    to bottom,
+    transparent 30%,
+    rgba(27, 42, 74, 0.12) 100%
+  );
+}
+
+/* ── Card Content ── */
+.entry-card__content {
+  padding: var(--space-xl) var(--space-xl) var(--space-xl);
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.entry-card__icon-badge {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--space-lg);
+  transition: all 0.4s ease;
+}
+
+.entry-card--employer .entry-card__icon-badge {
+  background: linear-gradient(135deg, rgba(27, 42, 74, 0.08), rgba(27, 42, 74, 0.04));
+  color: var(--navy);
+}
+
+.entry-card--employer:hover .entry-card__icon-badge {
+  background: linear-gradient(135deg, var(--navy), var(--navy-light));
+  color: var(--white);
+  transform: scale(1.05);
+}
+
+.entry-card--seeker .entry-card__icon-badge {
+  background: linear-gradient(135deg, rgba(232, 131, 42, 0.1), rgba(232, 131, 42, 0.04));
+  color: var(--orange);
+}
+
+.entry-card--seeker:hover .entry-card__icon-badge {
+  background: linear-gradient(135deg, var(--orange), var(--orange-light));
+  color: var(--white);
+  transform: scale(1.05);
+}
+
+.entry-card__title {
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: var(--space-sm);
+}
+
+.entry-card__description {
+  font-size: 1rem;
+  color: var(--gray-500);
+  line-height: 1.6;
+  margin-bottom: var(--space-xl);
+  flex: 1;
+}
+
+/* ── Card CTA ── */
+.entry-card__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 700;
+  padding: 14px 28px;
+  border-radius: var(--radius-full);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  width: fit-content;
+}
+
+.entry-card__cta svg {
+  transition: transform 0.3s ease;
+}
+
+.entry-card:hover .entry-card__cta svg {
+  transform: translateX(4px);
+}
+
+.entry-card--employer .entry-card__cta {
+  background: linear-gradient(135deg, var(--navy), var(--navy-light));
+  color: var(--white);
+  box-shadow: 0 4px 16px rgba(27, 42, 74, 0.25);
+}
+
+.entry-card--employer:hover .entry-card__cta {
+  box-shadow: 0 6px 24px rgba(27, 42, 74, 0.35);
+  transform: translateY(-2px);
+}
+
+.entry-card--seeker .entry-card__cta {
+  background: linear-gradient(135deg, var(--orange), var(--orange-light));
+  color: var(--white);
+  box-shadow: 0 4px 16px rgba(232, 131, 42, 0.3);
+}
+
+.entry-card--seeker:hover .entry-card__cta {
+  box-shadow: 0 6px 24px rgba(232, 131, 42, 0.4);
+  transform: translateY(-2px);
+}
+
+/* ── Shimmer Effect ── */
+.entry-card__shimmer {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 40%,
+    rgba(255, 255, 255, 0.15) 45%,
+    rgba(255, 255, 255, 0.25) 50%,
+    rgba(255, 255, 255, 0.15) 55%,
+    transparent 60%
+  );
+  background-size: 300% 100%;
+  background-position: 200% 0;
+  pointer-events: none;
+  border-radius: inherit;
+  transition: background-position 0s;
+}
+
+.entry-card:hover .entry-card__shimmer {
+  animation: entryCardShimmer 0.8s ease forwards;
+}
+
+@keyframes entryCardShimmer {
+  from {
+    background-position: 200% 0;
+  }
+  to {
+    background-position: -200% 0;
+  }
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .entry-section {
+    padding: var(--space-3xl) 0;
+  }
+
+  .entry-section__cards {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+    max-width: 480px;
+  }
+
+  .entry-card__image-wrapper {
+    height: 200px;
+  }
+
+  .entry-card__content {
+    padding: var(--space-lg);
+  }
+
+  .entry-card__icon-badge {
+    width: 48px;
+    height: 48px;
+    margin-bottom: var(--space-md);
+  }
+
+  .entry-card__title {
+    font-size: 1.2rem;
+  }
+
+  .entry-section__header {
+    margin-bottom: var(--space-2xl);
+  }
+}
+
+@media (max-width: 480px) {
+  .entry-card__image-wrapper {
+    height: 180px;
+  }
+
+  .entry-card__content {
+    padding: var(--space-md) var(--space-lg) var(--space-lg);
+  }
+}
