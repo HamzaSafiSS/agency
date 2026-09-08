@@ -3,6 +3,7 @@ import Hero from './components/Hero/Hero';
 import EntrySection from './components/EntrySection/EntrySection';
 import AboutSection from './components/AboutSection/AboutSection';
 import ServicesSection from './components/ServicesSection/ServicesSection';
+import NetworkSection from './components/NetworkSection/NetworkSection';
 import './App.css';
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
         <EntrySection />
         <AboutSection />
         <ServicesSection />
+        <NetworkSection />
       </main>
     </>
   );
