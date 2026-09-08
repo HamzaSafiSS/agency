@@ -5,6 +5,7 @@ import AboutSection from './components/AboutSection/AboutSection';
 import ServicesSection from './components/ServicesSection/ServicesSection';
 import NetworkSection from './components/NetworkSection/NetworkSection';
 import FAQSection from './components/FAQSection/FAQSection';
+import ContactSection from './components/ContactSection/ContactSection';
 import './App.css';
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
         <ServicesSection />
         <NetworkSection />
         <FAQSection />
+        <ContactSection />
       </main>
     </>
   );
